@@ -3,7 +3,6 @@
 <div align="center">
 
 [![Build status](https://github.com/process-intelligence-research/dbtool/workflows/build/badge.svg?branch=master&event=push)](https://github.com/process-intelligence-research/dbtool/actions?query=workflow%3Abuild)
-[![Python Version](https://img.shields.io/pypi/pyversions/dbtool.svg)](https://pypi.org/project/dbtool/)
 [![Dependencies Status](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)](https://github.com/process-intelligence-research/dbtool/pulls?utf8=%E2%9C%93&q=is%3Apr%20author%3Aapp%2Fdependabot)
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
