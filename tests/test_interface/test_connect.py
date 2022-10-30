@@ -1,5 +1,6 @@
 """Tests for the interface."""
 import pytest
+
 from dbtool.interface import *
 
 
@@ -15,16 +16,28 @@ def test_connect(options, result):
     """Test with parametrization."""
 
     assert connect(options) == result
-    
+
+
 def test_fullGraph():
     assert fullGraph() is not None
-    
+
+
 def test_uploadTurtle():
     # will raise Exception on err
-     assert uploadTurtle('/Users/marvinkleinpass/Developer/TU_DELFT/dbtool/tests/test_interface/query2.ttl') is None
-    
+    assert (
+        uploadTurtle(
+            "/Users/marvinkleinpass/Developer/TU_DELFT/dbtool/tests/test_interface/query2.ttl"
+        )
+        is None
+    )
+
+
 def test_uploadFile():
     # will raise Exception on err
-    assert uploadFile('/Users/marvinkleinpass/Developer/TU_DELFT/dbtool/tests/test_interface/query2.ttl','query22_DOI') is None
-
-
+    assert (
+        uploadFile(
+            "/Users/marvinkleinpass/Developer/TU_DELFT/dbtool/tests/test_interface/query2.ttl",
+            "query22_DOI",
+        )
+        is None
+    )

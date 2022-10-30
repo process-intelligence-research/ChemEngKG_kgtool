@@ -33,15 +33,18 @@ def version_callback(print_version: bool) -> None:
     if print_version:
         console.print(f"[yellow]dbtool[/] version: [bold blue]{version}[/]")
         raise typer.Exit()
-    
+
+
 @app.command(name="info")
 def _info():
-    """Prints Info about the API ? """    
+    """Prints Info about the API ?"""
     return 0
-    
+
+
 @app.command(name="fullGraph")
 def _fullGraph():
     fullGraph()
+
 
 @app.command()
 def main(
