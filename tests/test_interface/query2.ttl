@@ -1,0 +1,51 @@
+# Query 2: given DOI, check if an article already exists with matching DOI
+# when querying for prism:doi "10.1002/aic.17151", <http://dx.doi.org/10.1002/aic.17151> should be found and True should be returned
+# when querying for prism:doi "10.1002/aic.99999", False should be returned
+# when querying for prism:doi "10.1002/aic.17121", <http://dx.doi.org/10.1002/aic.17121> should be found and True should be returned
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fabio: <http://purl.org/spar/fabio/> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@prefix prism: <http://prismstandard.org/namespaces/basic/2.0/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix frbr: <http://purl.org/vocab/frbr/core#> .
+
+<http://dx.doi.org/10.1002/aic.17151> 								a fabio:JournalArticle ; 
+																	a fabio:DigitalItem ;
+																	frbr:partOf <https://doi.org/10.1002/(ISSN)1547-5905> ;																
+																	terms:title "In silico mechanically mediated atom transfer radical polymerization: A detailed kinetic study" ;
+																	terms:creator _:10_1002_aic_17151_1, _:10_1002_aic_17151_2, _:10_1002_aic_17151_3, _:10_1002_aic_17151_4 ;
+																	prism:publicationDate "2021-01-15"^^xsd:date ; # yyyy-mm-dd, though I expect yyyy and yyyy-mm will also occur occasionally
+																	prism:doi "10.1002/aic.17151" ;
+																	prism:issueIdentifier "5"^^xsd:integer ;
+																	prism:volumeIdentifier "67"^^xsd:integer ;
+																	fabio:isStoredOn <https://example.org/PLACEHOLDER_DATABASE_URI_doi_aic17151_pdf>, <https://example.org/PLACEHOLDER_DATABASE_URI_doi_aic17151_xml> ;
+																	fabio:hasURL <https://onlinelibrary.wiley.com/doi/pdf/10.1002/aic.17151>, <http://dx.doi.org/10.1002/aic.17151>, <https://onlinelibrary.wiley.com/doi/full-xml/10.1002/aic.17151> ;																	
+																	fabio:hasDateCollected "2022-09-28"^^xsd:date .
+																	
+<http://dx.doi.org/10.1002/aic.99999> 								a fabio:JournalArticle ; 
+																	a fabio:DigitalItem ;
+																	frbr:partOf <https://doi.org/10.1002/(ISSN)1547-5905> ;																
+																	terms:title "In silico mechanically mediated atom transfer radical polymerization: A detailed kinetic study" ;
+																	terms:creator _:10_1002_aic_17151_1, _:10_1002_aic_17151_2, _:10_1002_aic_17151_3, _:10_1002_aic_17151_4 ;
+																	prism:publicationDate "2021-01-15"^^xsd:date ; # yyyy-mm-dd, though I expect yyyy and yyyy-mm will also occur occasionally
+																	prism:issueIdentifier "5"^^xsd:integer ;
+																	prism:volumeIdentifier "67"^^xsd:integer ;
+																	fabio:isStoredOn <https://example.org/PLACEHOLDER_DATABASE_URI_doi_aic17151_pdf>, <https://example.org/PLACEHOLDER_DATABASE_URI_doi_aic17151_xml> ;
+																	fabio:hasURL <https://onlinelibrary.wiley.com/doi/pdf/10.1002/aic.17151>, <http://dx.doi.org/10.1002/aic.17151>, <https://onlinelibrary.wiley.com/doi/full-xml/10.1002/aic.17151> ;																	
+																	fabio:hasDateCollected "2022-09-28"^^xsd:date .
+																	
+<http://dx.doi.org/10.1002/aic.17121> 								a fabio:JournalArticle ; 
+																	a fabio:DigitalItem ;
+																	frbr:partOf <https://doi.org/10.1002/(ISSN)1547-5905> ;
+																	terms:title "Study of filtered interphase heat transfer using highly resolved CFD–DEM simulations" ;
+																	terms:creator _:10_1002_aic_17121_1, _:10_1002_aic_17121_2, _:10_1002_aic_17151_3 ;
+																	prism:publicationDate "2020-12-31"^^xsd:date ; # yyyy-mm-dd
+																	prism:doi "10.1002/aic.17121" ;
+																	prism:issueIdentifier "4"^^xsd:integer ;
+																	prism:volumeIdentifier "67"^^xsd:integer ;
+																	fabio:hasURL <https://onlinelibrary.wiley.com/doi/pdf/10.1002/aic.17121>, <http://dx.doi.org/10.1002/aic.17121>, <https://onlinelibrary.wiley.com/doi/full-xml/10.1002/aic.17121> ;
+																	fabio:isStoredOn <https://example.org/PLACEHOLDER_DATABASE_URI_doi_aic17121_pdf>, <https://example.org/PLACEHOLDER_DATABASE_URI_doi_aic17121_xml> ; 
+																	fabio:hasDateCollected "2022-09-28"^^xsd:date.

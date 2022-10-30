@@ -8,7 +8,7 @@ import typer
 from rich.console import Console
 
 from dbtool import version
-from dbtool.interface import connect
+from dbtool.interface import connect, fullGraph
 
 
 class Color(str, Enum):
@@ -33,9 +33,17 @@ def version_callback(print_version: bool) -> None:
     if print_version:
         console.print(f"[yellow]dbtool[/] version: [bold blue]{version}[/]")
         raise typer.Exit()
+    
+@app.command(name="info")
+def _info():
+    """Prints Info about the API ? """    
+    return 0
+    
+@app.command(name="fullGraph")
+def _fullGraph():
+    fullGraph()
 
-
-@app.command(options="")
+@app.command()
 def main(
     options: Optional[str] = typer.Option(
         None,
