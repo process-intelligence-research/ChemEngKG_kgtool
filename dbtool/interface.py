@@ -22,7 +22,7 @@ def run(payload):
         return request.json()
     else:
         raise Exception(
-            f"Query failed to run by returning code of {request.status_code}. {query}"
+            f"Query failed to run by returning code of {request.status_code}. {payload}"
         )
 
 
@@ -33,16 +33,18 @@ def prepareFile(path):
 
 #
 def uploadFile(filePath, DOI):
-    encoded_string = prepareFile(filePath)
+    encoded_string = prepareFile(filePath).decode("utf-8")
     root, ext = os.path.splitext(filePath)
-    mimeType = ext
-    fn = f'uploadFile(file:"{encoded_string}",mimetype: "{mimeType}", doi: "{DOI}")'
+    fn = f'uploadFile(file:"{encoded_string}",ext: "{ext}", doi: "{DOI}")'
     run_query("mutation {" + fn + "}")
 
 
 #
 def uploadTurtle(filePath):
-    encoded_string = prepareFile(filePath)
+    with open(filePath) as f:
+        encoded_string = base64.b64encode(f.read().encode("utf-8")).decode("utf-8")
+        fn = f'uploadTurtle(file:"{encoded_string}")'
+        run_query("mutation {" + fn + "}")
 
 
 # only supported by Neo4j atm
