@@ -18,7 +18,7 @@ awesome dbtool
 
 ## Quick Start
 
-[Here! ](https://github.com/process-intelligence-research/dbtool/tree/master/quick-start.md)
+[Here! ](https://github.com/process-intelligence-research/ChemEngKG_dbtool/blob/main/quick-start.md)
 
 
 ## 🚀 Features
