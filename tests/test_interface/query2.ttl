@@ -12,10 +12,10 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix frbr: <http://purl.org/vocab/frbr/core#> .
 
-<http://dx.doi.org/10.1002/aic.17151> 								a fabio:JournalArticle ; 
+<http://dx.doi.org/10.1444/aic.17151> 								a fabio:JournalArticle ; 
 																	a fabio:DigitalItem ;
 																	frbr:partOf <https://doi.org/10.1002/(ISSN)1547-5905> ;																
-																	terms:title "In silico mechanically mediated atom transfer radical polymerization: A detailed kinetic study" ;
+																	terms:title "TESTIn silico mechanically mediated atom transfer radical polymerization: A detailed kinetic study" ;
 																	terms:creator _:10_1002_aic_17151_1, _:10_1002_aic_17151_2, _:10_1002_aic_17151_3, _:10_1002_aic_17151_4 ;
 																	prism:publicationDate "2021-01-15"^^xsd:date ; # yyyy-mm-dd, though I expect yyyy and yyyy-mm will also occur occasionally
 																	prism:doi "10.1002/aic.17151" ;
@@ -25,10 +25,10 @@
 																	fabio:hasURL <https://onlinelibrary.wiley.com/doi/pdf/10.1002/aic.17151>, <http://dx.doi.org/10.1002/aic.17151>, <https://onlinelibrary.wiley.com/doi/full-xml/10.1002/aic.17151> ;																	
 																	fabio:hasDateCollected "2022-09-28"^^xsd:date .
 																	
-<http://dx.doi.org/10.1002/aic.99999> 								a fabio:JournalArticle ; 
+<http://dx.doi.org/10.1444/aic.99999> 								a fabio:JournalArticle ; 
 																	a fabio:DigitalItem ;
 																	frbr:partOf <https://doi.org/10.1002/(ISSN)1547-5905> ;																
-																	terms:title "In silico mechanically mediated atom transfer radical polymerization: A detailed kinetic study" ;
+																	terms:title "TESTIn silico mechanically mediated atom transfer radical polymerization: A detailed kinetic study" ;
 																	terms:creator _:10_1002_aic_17151_1, _:10_1002_aic_17151_2, _:10_1002_aic_17151_3, _:10_1002_aic_17151_4 ;
 																	prism:publicationDate "2021-01-15"^^xsd:date ; # yyyy-mm-dd, though I expect yyyy and yyyy-mm will also occur occasionally
 																	prism:issueIdentifier "5"^^xsd:integer ;
@@ -37,10 +37,10 @@
 																	fabio:hasURL <https://onlinelibrary.wiley.com/doi/pdf/10.1002/aic.17151>, <http://dx.doi.org/10.1002/aic.17151>, <https://onlinelibrary.wiley.com/doi/full-xml/10.1002/aic.17151> ;																	
 																	fabio:hasDateCollected "2022-09-28"^^xsd:date .
 																	
-<http://dx.doi.org/10.1002/aic.17121> 								a fabio:JournalArticle ; 
+<http://dx.doi.org/10.1444/aic.17121> 								a fabio:JournalArticle ; 
 																	a fabio:DigitalItem ;
 																	frbr:partOf <https://doi.org/10.1002/(ISSN)1547-5905> ;
-																	terms:title "Study of filtered interphase heat transfer using highly resolved CFD–DEM simulations" ;
+																	terms:title "TESTStudy of filtered interphase heat transfer using highly resolved CFD–DEM simulations" ;
 																	terms:creator _:10_1002_aic_17121_1, _:10_1002_aic_17121_2, _:10_1002_aic_17151_3 ;
 																	prism:publicationDate "2020-12-31"^^xsd:date ; # yyyy-mm-dd
 																	prism:doi "10.1002/aic.17121" ;

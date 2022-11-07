@@ -16,6 +16,10 @@ awesome dbtool
 
 </div>
 
+## Quick Start
+
+[Here! ](https://github.com/process-intelligence-research/dbtool/tree/master/.github/quick-start.md)
+
 
 ## 🚀 Features
 
