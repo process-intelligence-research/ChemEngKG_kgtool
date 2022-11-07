@@ -5,7 +5,7 @@ import pytest
 
 from dbtool.interface import *
 
-chemkg = ChemKG()#.dev()  ### defaults to dev_url and default_graph
+chemkg = ChemKG()  # .dev()  ### defaults to dev_url and default_graph
 
 
 @pytest.mark.parametrize(
