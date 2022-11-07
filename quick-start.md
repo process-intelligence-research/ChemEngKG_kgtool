@@ -5,6 +5,7 @@
 2. First Steps
 3. Functions
 4. Custom Queries
+5. URLs
 
 ### 1. Installation
 
@@ -82,3 +83,13 @@ chemkg.runCypher("MATCH (n) RETURN n LIMIT 10")
 chemkg.runSparql("SELECT * WHERE { ?s ?p ?o } LIMIT 10")
 ```
 
+### 5. URLs 
+
+- GraphQL: http://api.chemkg.cloud:4001/graphql
+- SparQL: http://api.chemkg.cloud:8890/sparql
+
+- Virtuoso Server: http://api.chemkg.cloud:8890
+  - user: dba, pass: dba
+
+- Neo4j Server: http://api.chemkg.cloud:7474
+  - user: neo4j, pass: letmein
