@@ -37,7 +37,7 @@ chemKG = ChemKG(graph="GraphDracula")
 - Upload your RDF Files via:
 
 ```python
-chemKG.uploadFile("/teenage/mutant/ninja.ttl")
+chemKG.uploadTurtle("/teenage/mutant/ninja.ttl")
 ```
 
 
