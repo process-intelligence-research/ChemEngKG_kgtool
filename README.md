@@ -1,4 +1,4 @@
-# dbtool
+# KGtool
 
 <div align="center">
 
