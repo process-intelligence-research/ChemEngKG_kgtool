@@ -76,7 +76,8 @@ class ChemKG:
         return self._run_query('mutation { runCypher(query: "' + query + '") }')
 
     def runSparql(self, query):
-        return self._run_query('mutation { runSparql(query: "' + query + '") }')
+        no_new_line = query.replace("\n", " ")
+        return self._run_query('mutation { runSparql(query: "' + no_new_line + '") }')
 
 
 def connect(options):
