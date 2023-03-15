@@ -15,8 +15,9 @@ default_graph = "chemkg"
 
 
 class ChemKG:
-    def dev():
-        return ChemKG(dev_url, default_graph)
+    @classmethod
+    def dev(cls):
+        return cls(dev_url, default_graph)
 
     def __init__(self, url=prod_url, graph=default_graph):
         self._url = url
@@ -61,16 +62,10 @@ class ChemKG:
         return self._run_query("mutation { getGraphs }")
 
     def getGraph(self):
-        return self._run_query(
-            'mutation { getGraph(urn: "' + self.graph + '") { virt neo4j } }'
-        )
+        return self._run_query('mutation { getGraph(urn: "' + self.graph + '") }')
 
     def deleteGraph(self):
         return self._run_query('mutation { deleteGraph(urn: "' + self.graph + '") }')
-
-    # only supported by Neo4j atm
-    def fullGraph(self):
-        return self._run_query("{ fullGraph }")
 
     def runSparql(self, query):
         no_new_line = query.replace("\n", " ")
