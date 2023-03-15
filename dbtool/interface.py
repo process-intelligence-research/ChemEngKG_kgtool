@@ -23,7 +23,7 @@ class ChemKG:
         self.graph = graph
 
     def __str__(self):
-        return f"ChemKG({self.url}, {self.graph})"
+        return f"ChemKG({self._url}, {self.graph})"
 
     def _run(self, payload):
         request = requests.post(self._url, json=payload, headers=headers)
@@ -72,12 +72,10 @@ class ChemKG:
     def fullGraph(self):
         return self._run_query("{ fullGraph }")
 
-    def runCypher(self, query):
-        return self._run_query('mutation { runCypher(query: "' + query + '") }')
-
     def runSparql(self, query):
         no_new_line = query.replace("\n", " ")
-        return self._run_query('mutation { runSparql(query: "' + no_new_line + '") }')
+        encodedQuery = base64.b64encode(no_new_line.encode("utf-8")).decode("utf-8")
+        return self._run_query('mutation { runSparql(query: "' + encodedQuery + '") }')
 
 
 def connect(options):
