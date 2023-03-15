@@ -9,7 +9,7 @@
 
 ### 1. Installation
 
-`pip3 install git+https://github.com/process-intelligence-research/ChemEngKG_dbtool.git`
+`pip3 install git+https://github.com/process-intelligence-research/ChemEngKG_kgtool.git`
 
 in your python file:
 
