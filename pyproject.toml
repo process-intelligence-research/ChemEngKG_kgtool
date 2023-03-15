@@ -4,14 +4,14 @@ requires = ["poetry_core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "dbtool"
+name = "kgtool"
 version = "0.1.0"
-description = "awesome dbtool"
+description = "awesome kgtool"
 readme = "README.md"
 authors = ["chemEngKG <marvin.kleinpass@rwth-aachen.de>"]
 license = "MIT"
-repository = "https://github.com/process-intelligence-research/dbtool"
-homepage = "https://github.com/process-intelligence-research/dbtool"
+repository = "https://github.com/process-intelligence-research/kgtool"
+homepage = "https://github.com/process-intelligence-research/kgtool"
 
 # Keywords description https://python-poetry.org/docs/pyproject/#keywords
 keywords = []  #! Update me
@@ -31,7 +31,7 @@ classifiers = [  #! Update me
 
 [tool.poetry.scripts]
 # Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
-"dbtool" = "dbtool.__main__:app"
+"kgtool" = "kgtool.__main__:app"
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -137,7 +137,7 @@ addopts = [
 source = ["tests"]
 
 [coverage.paths]
-source = "dbtool"
+source = "kgtool"
 
 [coverage.run]
 branch = true
