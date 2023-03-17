@@ -52,7 +52,7 @@ class ChemKG:
 
     #
     def uploadTurtle(self, filePath):
-        with open(filePath) as f:
+        with open(filePath, encoding = "utf-8") as f:
             encoded_string = base64.b64encode(f.read().encode("utf-8")).decode("utf-8")
             fn = f'uploadTurtle(file:"{encoded_string}", graph: "{self.graph}")'
             self._run_query("mutation {" + fn + "}")
