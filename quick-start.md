@@ -13,7 +13,7 @@
 
 in your python file:
 
-```from dbtool import *```
+```from dbtool.interface import *```
 
 ### 2. First Steps
 
