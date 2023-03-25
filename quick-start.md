@@ -13,7 +13,7 @@
 
 in your python file:
 
-```from kgtool import *```
+```from kgtool.interface import *```
 
 ### 2. First Steps
 
