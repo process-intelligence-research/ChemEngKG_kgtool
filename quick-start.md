@@ -13,7 +13,7 @@
 
 in your python file:
 
-```from dbtool import *```
+```from kgtool import *```
 
 ### 2. First Steps
 

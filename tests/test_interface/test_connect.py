@@ -3,7 +3,7 @@ import os
 
 import pytest
 
-from dbtool.interface import *
+from kgtool.interface import *
 
 chemkg = ChemKG()  # .dev()  ### defaults to dev_url and default_graph
 
