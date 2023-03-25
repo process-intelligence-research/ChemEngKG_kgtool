@@ -43,12 +43,26 @@ class ChemKG:
             return base64.b64encode(f.read())
 
     #
-    def uploadFile(self, filePath, DOI):
+    def uploadFile(self, filePath, URI):
+        """
+        Upload a file to the file storage and add basic triples to the knowledge graph.
+        Atributes
+        ---------
+        filePath : str
+            The path to the file to be uploaded.
+        URI : str
+            The URI of the object the file is associated with.
+        Returns
+        -------
+        dict
+            The response from the graphql API. If the upload was successful, the response will contain the URI of the file, the download URL, and information on the created hash object (uri,value,algorithm).
+        """
         with open(filePath, "rb") as f:
             encoded_string = base64.b64encode(f.read()).decode("utf-8")
             root, ext = os.path.splitext(filePath)
-            fn = f'uploadFile(file:"{encoded_string}", ext: "{ext}", doi: "{DOI}", graph: "{self.graph}")'
-            self._run_query("mutation {" + fn + "}")
+            fn = f'uploadFile(file:"{encoded_string}", ext: "{ext}", uri: "{URI}", graph: "{self.graph}")'
+            res = "{ uri downloadURL hash { uri value algorithm } }"
+            return self._run_query("mutation {" + fn + res + "}")
 
     #
     def uploadTurtle(self, filePath):

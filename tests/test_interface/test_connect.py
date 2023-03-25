@@ -5,7 +5,7 @@ import pytest
 
 from kgtool.interface import *
 
-chemkg = ChemKG()  # .dev()  ### defaults to dev_url and default_graph
+chemkg = ChemKG.dev()  # .dev()  ### defaults to dev_url and default_graph
 
 
 @pytest.mark.parametrize(
@@ -45,7 +45,7 @@ def test_uploadFile():
             file_path,
             "query22_DOI",
         )
-        is None
+        is not None
     )
 
 
