@@ -52,7 +52,7 @@ awesome kgtool
 ## Installation (for Users)
 
 ```bash
-pip install git+https://github.com/process-intelligence-research/kgtool
+pip install git+https://github.com/process-intelligence-research/ChemEngKG_kgtool
 ```
 
 Then you can run
