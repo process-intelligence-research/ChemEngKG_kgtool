@@ -8,7 +8,7 @@ import typer
 from rich.console import Console
 
 from kgtool import version
-from kgtool.interface import connect, fullGraph
+from kgtool.interface import connect
 
 
 class Color(str, Enum):
@@ -39,11 +39,6 @@ def version_callback(print_version: bool) -> None:
 def _info():
     """Prints Info about the API ?"""
     return 0
-
-
-@app.command(name="fullGraph")
-def _fullGraph():
-    fullGraph()
 
 
 @app.command()
