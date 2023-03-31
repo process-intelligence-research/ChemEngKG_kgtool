@@ -1,4 +1,4 @@
-# KGtool
+# KG-tool: Python package for accessing the Chemical Engineering Knowledge Graph (ChemEngKG)
 
 <div align="center">
 
@@ -11,8 +11,6 @@
 [![Semantic Versions](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--versions-e10079.svg)](https://github.com/process-intelligence-research/kgtool/releases)
 [![License](https://img.shields.io/github/license/process-intelligence-research/kgtool)](https://github.com/process-intelligence-research/kgtool/blob/master/LICENSE)
 ![Coverage Report](assets/images/coverage.svg)
-
-awesome kgtool
 
 </div>
 
