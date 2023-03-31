@@ -295,8 +295,8 @@ This project is licensed under the terms of the `MIT` license. See [LICENSE](htt
 
 ```bibtex
 @misc{kgtool,
-  author = {Marvin Kleinpaß, Valentin Kondakov, Qinghe Gao, Lukas Schulze Balhorn, Artur Schweidtmann},
-  title = {KG-tool: Python package for accessing the ChemEngKG},
+  author = {Kleinpaß, Marvin and Kondakov, Valentin and Gao, Qinghe and Schulze Balhorn, Lukas and Schweidtmann, Artur M.},
+  title = {KG-tool: Python package for accessing the Chemical Engineering Knowledge Graph (ChemEngKG)},
   year = {2023},
   publisher = {GitHub},
   journal = {GitHub repository},
