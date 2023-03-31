@@ -285,7 +285,7 @@ GitHub creates the `bug`, `enhancement`, and `documentation` labels for you. Dep
 
 ## 🛡 License
 
-[![License](https://img.shields.io/github/license/process-intelligence-research/kgtool)](https://github.com/process-intelligence-research/kgtool/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/process-intelligence-research/kgtool)](https://github.com/process-intelligence-research/ChemEngKG_kgtool/blob/main/License)
 
 This project is licensed under the terms of the `MIT` license. See [LICENSE](https://github.com/process-intelligence-research/kgtool/blob/master/LICENSE) for more details.
 
