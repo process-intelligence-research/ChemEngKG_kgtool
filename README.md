@@ -295,9 +295,9 @@ This project is licensed under the terms of the `MIT` license. See [LICENSE](htt
 
 ```bibtex
 @misc{kgtool,
-  author = {chemEngKG},
-  title = {awesome kgtool},
-  year = {2022},
+  author = {Marvin Kleinpaß, Valentin Kondakov, Qinghe Gao, Lukas Schulze Balhorn, Artur Schweidtmann},
+  title = {Kgtool: Python package for accessing to ChemEngKG},
+  year = {2023},
   publisher = {GitHub},
   journal = {GitHub repository},
   howpublished = {\url{https://github.com/process-intelligence-research/kgtool}}
