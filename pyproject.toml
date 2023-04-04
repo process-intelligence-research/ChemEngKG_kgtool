@@ -10,8 +10,8 @@ description = "awesome kgtool"
 readme = "README.md"
 authors = ["chemEngKG <marvin.kleinpass@rwth-aachen.de>"]
 license = "MIT"
-repository = "https://github.com/process-intelligence-research/kgtool"
-homepage = "https://github.com/process-intelligence-research/kgtool"
+repository = "https://github.com/process-intelligence-research/ChemEngKG_kgtool"
+homepage = "https://github.com/process-intelligence-research/ChemEngKG_kgtool"
 
 # Keywords description https://python-poetry.org/docs/pyproject/#keywords
 keywords = []  #! Update me
