@@ -26,7 +26,6 @@ chemKG = ChemKG()
 
 
 ```python
-# community version of neo4j does not support mutliple graphs
 chemKG = ChemKG(graph="GraphDracula")
 ```
 
@@ -43,7 +42,7 @@ chemKG.uploadTurtle("/teenage/mutant/ninja.ttl")
 - Upload your Files via:
 
 ```python
-chemKG.uploadFile("/path/to/file.ext", "someDOI")
+chemKG.uploadFile("/path/to/file.ext", "someURI")
 ```
 
 After upload the generated hash-download-url will be inserted as a Triple in the current Graph.
@@ -69,16 +68,8 @@ chemKG.deleteGraph()
 
 ### 4. Custom Queries
 
-- Neo4j
-
-```python
-chemkg.runCypher("MATCH (n) RETURN n LIMIT 10")
-```
-
-
 - Virtuoso
 
 ```python
 chemkg.runSparql("SELECT * WHERE { ?s ?p ?o } LIMIT 10")
 ```
-
