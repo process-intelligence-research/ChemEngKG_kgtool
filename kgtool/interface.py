@@ -65,6 +65,18 @@ class ChemKG:
             return self._run_query("mutation {" + fn + res + "}")
 
     #
+    def deleteFile(self, fileURI):
+        """
+        Delete a file from the file storage and remove the associated triples from the knowledge graph.
+        Atributes
+        ---------
+        fileURI : str
+            The URI of the file to be deleted.
+        """
+        fn = f'deleteFile(fileURI: "{fileURI}", graph: "{self.graph}")'
+        return self._run_query("mutation {" + fn + "}")
+
+    #
     def uploadTurtle(self, filePath):
         with open(filePath, encoding="utf-8") as f:
             encoded_string = base64.b64encode(f.read().encode("utf-8")).decode("utf-8")
