@@ -31,7 +31,7 @@ def test_uploadTurtle():
         chemkg.uploadTurtle(
             file_path,
         )
-        is None
+        is not None
     )
 
 

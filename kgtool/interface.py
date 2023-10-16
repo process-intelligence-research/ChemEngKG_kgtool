@@ -60,9 +60,23 @@ class ChemKG:
         with open(filePath, "rb") as f:
             encoded_string = base64.b64encode(f.read()).decode("utf-8")
             root, ext = os.path.splitext(filePath)
-            fn = f'uploadFile(file:"{encoded_string}", ext: "{ext}", uri: "{URI}", graph: "{self.graph}")'
-            res = "{ uri downloadURL hash { uri value algorithm } }"
-            return self._run_query("mutation {" + fn + res + "}")
+            input = (
+                'ext: "'
+                + ext
+                + '", file: "'
+                + encoded_string
+                + '", graph: "'
+                + self.graph
+                + '" , uri: "'
+                + URI
+                + '"'
+            )
+            mutation = (
+                "mutation { uploadFile(input: {"
+                + input
+                + "} ) { fileName, subjectURI, predicate, fileURI, hashURI  } }"
+            )
+            return self._run_query(mutation)
 
     #
     def deleteFile(self, fileURI):
@@ -73,30 +87,39 @@ class ChemKG:
         fileURI : str
             The URI of the file to be deleted.
         """
-        fn = f'deleteFile(fileURI: "{fileURI}", graph: "{self.graph}")'
-        return self._run_query("mutation {" + fn + "}")
+        input = 'fileURI: "' + fileURI + '", graph: "' + self.graph + '"'
+        mutation = "mutation { deleteFile(input: {" + input + "} ) { response } }"
+        return self._run_query(mutation)
 
     #
     def uploadTurtle(self, filePath):
         with open(filePath, encoding="utf-8") as f:
             encoded_string = base64.b64encode(f.read().encode("utf-8")).decode("utf-8")
-            fn = f'uploadTurtle(file:"{encoded_string}", graph: "{self.graph}")'
-            self._run_query("mutation {" + fn + "}")
+            input = 'file: "' + encoded_string + '", graph: "' + self.graph + '"'
+            mutation = "mutation { uploadTurtle(input: {" + input + "} ) { response } }"
+            return self._run_query(mutation)
 
     #
     def getGraphs(self):
-        return self._run_query("mutation { getGraphs }")
+        return self._run_query("query { getGraphs { graphs }}")
 
     def getGraph(self):
-        return self._run_query('mutation { getGraph(urn: "' + self.graph + '") }')
+        input = 'graph: "' + self.graph + '"'
+        query = "query { getGraph(input: {" + input + "} ) { contents } }"
+        return self._run_query(query)
 
     def deleteGraph(self):
-        return self._run_query('mutation { deleteGraph(urn: "' + self.graph + '") }')
+        input = f'urn: "urn:graph:{self.graph}"'
+        mutation = "mutation { dropGraph(input: {" + input + "} ) { response } }"
+        return self._run_query(mutation)
 
     def runSparql(self, query):
         no_new_line = query.replace("\n", " ")
         encodedQuery = base64.b64encode(no_new_line.encode("utf-8")).decode("utf-8")
-        return self._run_query('mutation { runSparql(query: "' + encodedQuery + '") }')
+        input = 'query: "' + encodedQuery + '"'
+        mutation = "mutation { runSparql(input: {" + input + "} ) { response } }"
+        return self._run_query(mutation)
+        #    query: "' + encodedQuery + '") }')
 
 
 def connect(options):
