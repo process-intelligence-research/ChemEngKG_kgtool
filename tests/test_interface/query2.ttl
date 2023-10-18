@@ -11,6 +11,7 @@
 @prefix prism: <http://prismstandard.org/namespaces/basic/2.0/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix frbr: <http://purl.org/vocab/frbr/core#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <http://dx.doi.org/10.1444/aic.17151> 								a fabio:JournalArticle ; 
 																	a fabio:DigitalItem ;
@@ -49,3 +50,8 @@
 																	fabio:hasURL <https://onlinelibrary.wiley.com/doi/pdf/10.1002/aic.17121>, <http://dx.doi.org/10.1002/aic.17121>, <https://onlinelibrary.wiley.com/doi/full-xml/10.1002/aic.17121> ;
 																	fabio:isStoredOn <https://example.org/PLACEHOLDER_DATABASE_URI_doi_aic17121_pdf>, <https://example.org/PLACEHOLDER_DATABASE_URI_doi_aic17121_xml> ; 
 																	fabio:hasDateCollected "2022-09-28"^^xsd:date.
+
+<http://doi.org/10.1002/aic.17121> frbr:embodiment <http://chemengkg.org/resource/test_manifestation> .
+
+<http://chemengkg.org/resource/691ddc07-a3bf-533b-982b-c44ff538d757> a fabio:DigitalManifestation, dcat:Distribution ;
+    dcterms:publisher "Dummy publisher" .
