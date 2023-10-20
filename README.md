@@ -298,11 +298,40 @@ The following list gives an overview of the available functionalities:
   ```json
   {"data": {
     "deleteFile": {
-      ... FILL IN
+      "response": ...
       }
     }
   }
   ```
+
+</p>
+</details>
+
+<details>
+<summary>uploadTurtle</summary>
+<p>
+
+```python
+chemkg.uploadTurtle(turtle: str)
+```
+
+Uploads a turtle file to the ChemEngKG.
+
+**Inputs**:
+- `turtle`: file path to the turtle file to be uploaded
+
+**Returns**:
+```json
+{"data": {
+  "uploadTurtle": {
+    "response": ...
+    }
+  }
+}
+```
+
+</p>
+</details>
 
 ### Makefile usage (for Maintainer)
 

@@ -92,12 +92,26 @@ class ChemKG:
         return self._run_query(mutation)
 
     #
-    def uploadTurtle(self, filePath):
-        with open(filePath, encoding="utf-8") as f:
-            encoded_string = base64.b64encode(f.read().encode("utf-8")).decode("utf-8")
-            input = 'file: "' + encoded_string + '", graph: "' + self.graph + '"'
-            mutation = "mutation { uploadTurtle(input: {" + input + "} ) { response } }"
-            return self._run_query(mutation)
+    def uploadTurtle(self, turtle: str):
+        """
+        Upload a turtle file to the knowledge graph.
+        Atributes
+        ---------
+        turtle : str
+            The turtle file to be uploaded. Either a file path or a turtle string.
+        """
+        if os.path.isfile(turtle):
+            # given turtle is a file path -> read file and upload content
+            with open(turtle, encoding="utf-8") as f:
+                encoded_string = base64.b64encode(f.read().encode("utf-8")).decode(
+                    "utf-8"
+                )
+        else:
+            # given turtle is a string -> encode string and upload content
+            encoded_string = base64.b64encode(turtle.encode("utf-8")).decode("utf-8")
+        input = 'file: "' + encoded_string + '", graph: "' + self.graph + '"'
+        mutation = "mutation { uploadTurtle(input: {" + input + "} ) { response } }"
+        return self._run_query(mutation)
 
     #
     def getGraphs(self):

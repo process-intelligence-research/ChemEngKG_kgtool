@@ -12,6 +12,7 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix frbr: <http://purl.org/vocab/frbr/core#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 
 <http://dx.doi.org/10.1444/aic.17151> 								a fabio:JournalArticle ; 
 																	a fabio:DigitalItem ;
