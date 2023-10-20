@@ -115,6 +115,9 @@ class ChemKG:
 
     #
     def getGraphs(self):
+        """
+        Retrieve a list of all available graphs.
+        """
         return self._run_query("query { getGraphs { graphs }}")
 
     def getGraph(self):
@@ -123,17 +126,26 @@ class ChemKG:
         return self._run_query(query)
 
     def deleteGraph(self):
+        """
+        Retrieve the contents of self.graph.
+        """
         input = f'urn: "urn:graph:{self.graph}"'
         mutation = "mutation { dropGraph(input: {" + input + "} ) { response } }"
         return self._run_query(mutation)
 
     def runSparql(self, query):
+        """
+        Run a SPARQL query on the knowledge graph.
+        Atributes
+        ---------
+        query : str
+            The SPARQL query to be executed.
+        """
         no_new_line = query.replace("\n", " ")
         encodedQuery = base64.b64encode(no_new_line.encode("utf-8")).decode("utf-8")
         input = 'query: "' + encodedQuery + '"'
         mutation = "mutation { runSparql(input: {" + input + "} ) { response } }"
         return self._run_query(mutation)
-        #    query: "' + encodedQuery + '") }')
 
 
 def connect(options):
