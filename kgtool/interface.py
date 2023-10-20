@@ -125,14 +125,6 @@ class ChemKG:
         query = "query { getGraph(input: {" + input + "} ) { contents } }"
         return self._run_query(query)
 
-    def deleteGraph(self):
-        """
-        Retrieve the contents of self.graph.
-        """
-        input = f'urn: "urn:graph:{self.graph}"'
-        mutation = "mutation { dropGraph(input: {" + input + "} ) { response } }"
-        return self._run_query(mutation)
-
     def runSparql(self, query):
         """
         Run a SPARQL query on the knowledge graph.
