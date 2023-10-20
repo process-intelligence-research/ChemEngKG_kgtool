@@ -120,6 +120,7 @@ class ChemKG:
         """
         return self._run_query("query { getGraphs { graphs }}")
 
+    #
     def getGraph(self):
         """
         Retrieve the contents of the graph defined in self.graph.
@@ -128,6 +129,7 @@ class ChemKG:
         query = "query { getGraph(input: {" + input + "} ) { contents } }"
         return self._run_query(query)
 
+    #
     def runSparql(self, query):
         """
         Run a SPARQL query on the knowledge graph.

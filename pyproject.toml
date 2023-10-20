@@ -5,7 +5,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "kgtool"
-version = "0.2.0dev"
+version = "0.2.1"
 description = "Python package for accessing the Chemical Engineering Knowledge Graph (ChemEngKG)"
 readme = "README.md"
 authors = [
