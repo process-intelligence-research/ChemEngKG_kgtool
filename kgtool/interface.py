@@ -9,7 +9,6 @@ import os
 import requests
 
 dev_url = "http://localhost:4001/graphql"
-prod_url = "http://api.chemkg.cloud:4001/graphql"
 headers = {"Content-Type": "application/json"}
 default_graph = "chemkg"
 
@@ -19,7 +18,7 @@ class ChemKG:
     def dev(cls):
         return cls(dev_url, default_graph)
 
-    def __init__(self, url=prod_url, graph=default_graph):
+    def __init__(self, url=dev_url, graph=default_graph):
         self._url = url
         self.graph = graph
 
