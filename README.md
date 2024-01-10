@@ -47,7 +47,8 @@
 - [`Stale bot`](https://github.com/apps/stale) that closes abandoned issues after a period of inactivity. (You will only [need to setup free plan](https://github.com/marketplace/stale)). Configuration is [here](https://github.com/process-intelligence-research/ChemEngKG_kgtool/blob/main/.github/.stale.yml).
 - [Semantic Versions](https://semver.org/) specification with [`Release Drafter`](https://github.com/marketplace/actions/release-drafter).
 
-## Installation (for Users)
+## Installation and Documentation
+### 1. Install package
 
 ```bash
 pip install git+https://github.com/process-intelligence-research/ChemEngKG_kgtool
@@ -64,6 +65,273 @@ or with `Poetry`:
 ```bash
 poetry run kgtool --help
 ```
+
+### 2. Import package and setup interface
+
+Import the package to your python project with
+
+```python
+from kgtool.interface import *
+```
+
+and setup a connection to the ChemEngKG with
+
+```python
+chemkg = ChemKG(url="api_url", graph="graph_name")
+```
+
+where `api_url` is the url of the ChemEngKG GraphQL-API and `graph_name` is the name of the default graph you want to access.
+You can also use 
+
+```python
+chemkg_dev = ChemKG.dev()
+```
+
+for development purposes. This will connect to a local instance of the ChemEngKG, thus make sure to have the ChemEngKG running locally (see [ChemEngKG_backend repository](https://github.com/process-intelligence-research/ChemEngKG_backend) for further guidance).
+
+### 3. Documentation
+
+#### Return format
+
+The interface provides a set of funcitonalities which can be accessed via the `ChemKG` class. 
+Since the interface always interacts with the ChemEngKG via GraphQL the resonse is always a dictionary of the following form:
+
+```json
+{
+  "data": {
+    "function_name": {
+      ...
+    }
+  }
+}
+```
+
+or 
+
+```json
+{
+  "errors": [
+    ...
+  ]
+}
+```
+
+if an error occured in the backend.
+
+
+<details>
+<summary>FILL IN EXAMPLE</summary>
+<p>
+</p>
+</details>
+
+#### Functionalities
+The following list gives an overview of the available functionalities:
+
+<details>
+<summary>getGraphs</summary>
+<p>
+
+  ```python
+  chemkg.getGraphs()
+  ```
+
+  Retrieve the URI of all available graphs in the ChemEngKG.
+
+  **Returns:**
+  ```json
+  {"data": {
+    "getGraphs": {
+      "graphs":[...]
+      }
+    }
+  }
+  ```
+  The `graphs` field contains a list of strings which are the URIs of the available graphs.
+
+  **Note:**
+  URI is the unique resource identifier of a graph. It is not the same as the graph name which is used to define the interfaces graph (`chemkg.graph`).
+</p>
+</details>
+
+<details>
+<summary>getGraph</summary>
+<p>
+
+  ```python
+  chemkg.getGraph()
+  ```
+
+  Retrieve the contents of a the graph defined in `chemkg.graph` as turtle string.
+
+  **Returns:**
+  ```json
+  {"data": {
+    "getGraph": {
+      "contents": ...
+      }
+    }
+  }
+  ```
+  The `contents` field contains a string which is the turtle representation of the graph in `chemkg.graph`.
+</p>
+</details>
+
+<details>
+<summary>runSparql</summary>
+<p>
+
+  ```python
+  chemkg.runSparql(query)
+  ```
+  Runs a SPARQL query on the graph defined in `chemkg.graph` and returns the response.
+  
+  **Inputs:**
+  - `query`: SPARQL query string
+
+  **Returns:**
+  ```json
+  {"data": {
+    "runSparql": {
+      "response":
+      }
+    }
+  }
+  ```
+  The response field contains the response of the SPARQL query. Since it can look very different depending on the query here is a small example:
+  <details>
+  <summary>runSparql Example</summary>
+  <p>
+    For a query like 
+
+    ```sparql
+    SELECT ?s ?p ?o
+    WHERE {
+      ?s ?p ?o
+    }
+    ```
+    
+    the respnse would look like this:
+    ```json
+    {"data": {
+      "runSparql": {
+        "response": {
+          "head": {
+            "link": [],
+            "vars": ["s", "p", "o"]
+          },
+          "results": {
+            "distinct": False,
+            "ordered": True,
+            "bindings": [{
+              "s": {
+                "type": "uri",
+                "value": "http://www.openlinksw.com/virtrdf-data-formats#default-iid"
+              },
+              "p": {
+                "type": "uri", 
+                "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+              },
+              "o": {
+                "type": "uri",
+                "value": "http://www.openlinksw.com/schemas/virtrdf#QuadMapFormat"
+              }
+            }]
+          }
+        }
+      }
+    }}
+    ```
+  </p>
+  </details>
+</p>
+</details>
+
+<details>
+<summary>uploadFile</summary>
+<p>
+  
+  ```python
+  chemkg.uploadFile(file_path, URI)
+  ```
+  Uploads a file to the ChemEngKG. The file is attached to the object defined by `URI`.
+  
+  **Inputs**:
+  - `file_path`: path to the file to be uploaded
+  - `URI`: URI of the object in the graph to which the file should be attached.
+
+  **Returns**:
+
+  ```json
+  {"data": {
+    "uploadFile": {
+      "fileName": ...,
+      "subjectURI": ...,
+      "predicate": ...,
+      "fileURI": ...,
+      "hashURI": ...
+    }
+  }}
+  ```
+ - `fileName`: name the uploaded file is stored under in the ChemEngKG filestorage. You can use this name to download the file sending a request to `<filestorageURL>/uploads/<fileName>`.
+  - `subjectURI`: URI of the object in the graph to which the file is attached.
+  - `predicate`: predicate of the triple which connects the object to the file. This should either be `frbr:exemplar` or `frbr:part`.
+  - `fileURI`: URI of the file node in the graph.
+  - `hashURI`: URI of the hash node in the graph.
+
+</p>
+</details>
+
+<details>
+<summary>deleteFile</summary>
+<p>
+  
+  ```python
+  chemkg.deleteFile(fileURI)
+  ```
+  Deletes a file from the ChemEngKG filestorage and removes all afiliated triples in the graph. The file is identified by its URI.
+  
+  **Inputs**:
+  - `fileURI`: URI of the file to be deleted
+
+  **Returns**:
+  ```json
+  {"data": {
+    "deleteFile": {
+      "response": ...
+      }
+    }
+  }
+  ```
+
+</p>
+</details>
+
+<details>
+<summary>uploadTurtle</summary>
+<p>
+
+```python
+chemkg.uploadTurtle(turtle: str)
+```
+
+Uploads a turtle file to the ChemEngKG.
+
+**Inputs**:
+- `turtle`: file path to the turtle file to be uploaded
+
+**Returns**:
+```json
+{"data": {
+  "uploadTurtle": {
+    "response": ...
+    }
+  }
+}
+```
+
+</p>
+</details>
 
 ### Makefile usage (for Maintainer)
 

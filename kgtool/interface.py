@@ -9,7 +9,6 @@ import os
 import requests
 
 dev_url = "http://localhost:4001/graphql"
-prod_url = "http://api.chemkg.cloud:4001/graphql"
 headers = {"Content-Type": "application/json"}
 default_graph = "chemkg"
 
@@ -19,7 +18,7 @@ class ChemKG:
     def dev(cls):
         return cls(dev_url, default_graph)
 
-    def __init__(self, url=prod_url, graph=default_graph):
+    def __init__(self, url=dev_url, graph=default_graph):
         self._url = url
         self.graph = graph
 
@@ -60,9 +59,23 @@ class ChemKG:
         with open(filePath, "rb") as f:
             encoded_string = base64.b64encode(f.read()).decode("utf-8")
             root, ext = os.path.splitext(filePath)
-            fn = f'uploadFile(file:"{encoded_string}", ext: "{ext}", uri: "{URI}", graph: "{self.graph}")'
-            res = "{ uri downloadURL hash { uri value algorithm } }"
-            return self._run_query("mutation {" + fn + res + "}")
+            input = (
+                'ext: "'
+                + ext
+                + '", file: "'
+                + encoded_string
+                + '", graph: "'
+                + self.graph
+                + '" , uri: "'
+                + URI
+                + '"'
+            )
+            mutation = (
+                "mutation { uploadFile(input: {"
+                + input
+                + "} ) { fileName, subjectURI, predicate, fileURI, hashURI  } }"
+            )
+            return self._run_query(mutation)
 
     #
     def deleteFile(self, fileURI):
@@ -73,30 +86,62 @@ class ChemKG:
         fileURI : str
             The URI of the file to be deleted.
         """
-        fn = f'deleteFile(fileURI: "{fileURI}", graph: "{self.graph}")'
-        return self._run_query("mutation {" + fn + "}")
+        input = 'fileURI: "' + fileURI + '", graph: "' + self.graph + '"'
+        mutation = "mutation { deleteFile(input: {" + input + "} ) { response } }"
+        return self._run_query(mutation)
 
     #
-    def uploadTurtle(self, filePath):
-        with open(filePath, encoding="utf-8") as f:
-            encoded_string = base64.b64encode(f.read().encode("utf-8")).decode("utf-8")
-            fn = f'uploadTurtle(file:"{encoded_string}", graph: "{self.graph}")'
-            self._run_query("mutation {" + fn + "}")
+    def uploadTurtle(self, turtle: str):
+        """
+        Upload a turtle file to the knowledge graph.
+        Atributes
+        ---------
+        turtle : str
+            The turtle file to be uploaded. Either a file path or a turtle string.
+        """
+        if os.path.isfile(turtle):
+            # given turtle is a file path -> read file and upload content
+            with open(turtle, encoding="utf-8") as f:
+                encoded_string = base64.b64encode(f.read().encode("utf-8")).decode(
+                    "utf-8"
+                )
+        else:
+            # given turtle is a string -> encode string and upload content
+            encoded_string = base64.b64encode(turtle.encode("utf-8")).decode("utf-8")
+        input = 'file: "' + encoded_string + '", graph: "' + self.graph + '"'
+        mutation = "mutation { uploadTurtle(input: {" + input + "} ) { response } }"
+        return self._run_query(mutation)
 
     #
     def getGraphs(self):
-        return self._run_query("mutation { getGraphs }")
+        """
+        Retrieve a list of all available graphs.
+        """
+        return self._run_query("query { getGraphs { graphs }}")
 
+    #
     def getGraph(self):
-        return self._run_query('mutation { getGraph(urn: "' + self.graph + '") }')
+        """
+        Retrieve the contents of the graph defined in self.graph.
+        """
+        input = 'graph: "' + self.graph + '"'
+        query = "query { getGraph(input: {" + input + "} ) { contents } }"
+        return self._run_query(query)
 
-    def deleteGraph(self):
-        return self._run_query('mutation { deleteGraph(urn: "' + self.graph + '") }')
-
+    #
     def runSparql(self, query):
+        """
+        Run a SPARQL query on the knowledge graph.
+        Atributes
+        ---------
+        query : str
+            The SPARQL query to be executed.
+        """
         no_new_line = query.replace("\n", " ")
         encodedQuery = base64.b64encode(no_new_line.encode("utf-8")).decode("utf-8")
-        return self._run_query('mutation { runSparql(query: "' + encodedQuery + '") }')
+        input = 'query: "' + encodedQuery + '"'
+        mutation = "mutation { runSparql(input: {" + input + "} ) { response } }"
+        return self._run_query(mutation)
 
 
 def connect(options):

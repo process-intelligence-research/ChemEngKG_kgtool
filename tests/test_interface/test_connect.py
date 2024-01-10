@@ -31,7 +31,7 @@ def test_uploadTurtle():
         chemkg.uploadTurtle(
             file_path,
         )
-        is None
+        is not None
     )
 
 
@@ -59,14 +59,3 @@ def test_getGraph():
 
 def test_runSparql():
     assert chemkg.runSparql("SELECT * WHERE { ?s ?p ?o } LIMIT 10") is not None
-
-
-def test_deleteAll():
-    assert chemkg.deleteGraph() is not None
-
-
-# def test_getGraph():
-#     assert chemkg.getGraph("urn:uuid:1") is not None
-
-# def test_deleteGraph():
-#     assert chemkg.deleteGraph("urn:uuid:1") is not None
