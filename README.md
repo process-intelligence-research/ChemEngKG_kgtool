@@ -562,10 +562,12 @@ This project is licensed under the terms of the `MIT` license. See [LICENSE](htt
 ```bibtex
 @misc{kgtool,
   author = {Kleinpaß, Marvin and Kondakov, Valentin and Gao, Qinghe and Schulze Balhorn, Lukas and Schweidtmann, Artur M.},
+  doi = {10.4121/83abb8a2-73f8-4f45-994c-a904268757ae.v1},
   title = {KG-tool: Python package for accessing the Chemical Engineering Knowledge Graph (ChemEngKG)},
-  year = {2023},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/process-intelligence-research/ChemEngKG_kgtool}}
+  year = {2024},
+  publisher = {4TU.ResearchData},
+  keywords = {Artificial intelligence, chemical engineering, knowledge graph, flowsheet simulations, chemical process development},
+  copyright = {MIT},
+  url = {https://doi.org/10.4121/83abb8a2-73f8-4f45-994c-a904268757ae}
 }
 ```
