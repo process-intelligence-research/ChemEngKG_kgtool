@@ -190,7 +190,7 @@ test = ["flake8 (==3.7.8)", "hypothesis (==3.55.3)"]
 
 [[package]]
 name = "coverage"
-version = "6.5.0"
+version = "7.2.1"
 description = "Code coverage measurement for Python"
 optional = false
 python-versions = ">=3.7"
@@ -1050,3 +1050,8 @@ files = [
     {file = "wrapt-1.14.1-cp39-cp39-win_amd64.whl", hash = "sha256:dee60e1de1898bde3b238f18340eec6148986da0455d8ba7848d50470a7a32fb"},
     {file = "wrapt-1.14.1.tar.gz", hash = "sha256:380a85cf89e0e69b7cfbe2ea9f765f004ff419f34194018a6827ac0e3edfed4d"},
 ]
+
+[metadata]
+lock-version = "2.0"
+python-versions = "^3.9"
+content-hash = "f09d4d9f4cc72fea6e1f808c5dad365de21ea5133a7f2cd0332c6ea5393af2e9"
