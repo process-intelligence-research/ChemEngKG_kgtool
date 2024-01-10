@@ -7,7 +7,8 @@
 
 Vulnerabilities can be reported by emailing core members:
 
-- chemEngKG [marvin.kleinpass@rwth-aachen.de](mailto:marvin.kleinpass@rwth-aachen.de)
+- Marvin Kleinpass [marvin.kleinpass@rwth-aachen.de](mailto:marvin.kleinpass@rwth-aachen.de)
+- Valentin Kondakov [valentin.kondakov@rwth-aachen.de](mailto:valentin.kondakov@rwth-aachen.de)
 
 Please include the requested information listed below (as much as you can provide) to help us better understand the nature and scope of the possible issue:
 
