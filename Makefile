@@ -4,17 +4,17 @@ PYTHON := python
 PYTHONPATH := `pwd`
 
 #* Docker variables
-IMAGE := dbtool
+IMAGE := kgtool
 VERSION := latest
 
 #* Poetry
 .PHONY: poetry-download
 poetry-download:
-	curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | $(PYTHON) -
+	curl -sSL curl -sSL https://install.python-poetry.org | $(PYTHON) -
 
 .PHONY: poetry-remove
 poetry-remove:
-	curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | $(PYTHON) - --uninstall
+	curl -sSL curl -sSL https://install.python-poetry.org | $(PYTHON) - --uninstall
 
 #* Installation
 .PHONY: install
@@ -40,14 +40,14 @@ formatting: codestyle
 #* Linting
 .PHONY: test
 test:
-	PYTHONPATH=$(PYTHONPATH) poetry run pytest -c pyproject.toml --cov-report=html --cov=dbtool tests/
+	PYTHONPATH=$(PYTHONPATH) poetry run pytest -c pyproject.toml --cov-report=html --cov=kgtool tests/
 	poetry run coverage-badge -o assets/images/coverage.svg -f
 
 .PHONY: check-codestyle
 check-codestyle:
 	poetry run isort --diff --check-only --settings-path pyproject.toml ./
 	poetry run black --diff --check --config pyproject.toml ./
-	poetry run darglint --verbosity 2 dbtool tests
+	poetry run darglint --verbosity 2 kgtool tests
 
 .PHONY: mypy
 mypy:
@@ -57,7 +57,7 @@ mypy:
 check-safety:
 	poetry check
 	poetry run safety check --full-report
-	poetry run bandit -ll --recursive dbtool tests
+	poetry run bandit -ll --recursive kgtool tests
 
 .PHONY: lint
 lint: test check-codestyle mypy check-safety
