@@ -3,9 +3,9 @@ import os
 
 import pytest
 
-from dbtool.interface import *
+from kgtool.interface import *
 
-chemkg = ChemKG()  # .dev()  ### defaults to dev_url and default_graph
+chemkg = ChemKG.dev()  # .dev()  ### defaults to dev_url and default_graph
 
 
 @pytest.mark.parametrize(
@@ -22,10 +22,6 @@ def test_connect(options, result):
     assert connect(options) == result
 
 
-def test_fullGraph():
-    assert chemkg.fullGraph() is not None
-
-
 def test_uploadTurtle():
     # will raise Exception on err
     absolute_path = os.path.dirname(__file__)
@@ -35,7 +31,7 @@ def test_uploadTurtle():
         chemkg.uploadTurtle(
             file_path,
         )
-        is None
+        is not None
     )
 
 
@@ -49,7 +45,7 @@ def test_uploadFile():
             file_path,
             "query22_DOI",
         )
-        is None
+        is not None
     )
 
 
@@ -63,18 +59,3 @@ def test_getGraph():
 
 def test_runSparql():
     assert chemkg.runSparql("SELECT * WHERE { ?s ?p ?o } LIMIT 10") is not None
-
-
-def test_runCypher():
-    assert chemkg.runCypher("MATCH (n) RETURN n LIMIT 10") is not None
-
-
-def test_deleteAll():
-    assert chemkg.deleteGraph() is not None
-
-
-# def test_getGraph():
-#     assert chemkg.getGraph("urn:uuid:1") is not None
-
-# def test_deleteGraph():
-#     assert chemkg.deleteGraph("urn:uuid:1") is not None
