@@ -503,6 +503,10 @@ version = "5.11.1"
 description = "Python Build Reasonableness"
 optional = false
 python-versions = ">=2.6"
+files = [
+    {file = "pbr-5.11.0-py2.py3-none-any.whl", hash = "sha256:db2317ff07c84c4c63648c9064a79fe9d9f5c7ce85a9099d4b6258b3db83225a"},
+    {file = "pbr-5.11.0.tar.gz", hash = "sha256:b97bc6695b2aff02144133c2e7399d5885223d42b7912ffaec2ca3898e673bfe"},
+]
 
 [[package]]
 name = "platformdirs"
@@ -773,10 +777,6 @@ version = "2.28.1"
 description = "Python HTTP for Humans."
 optional = false
 python-versions = ">=3.7, <4"
-files = [
-    {file = "requests-2.28.1-py3-none-any.whl", hash = "sha256:8fefa2a1a1365bf5520aac41836fbee479da67864514bdb821f31ce07ce65349"},
-    {file = "requests-2.28.1.tar.gz", hash = "sha256:7c5599b102feddaa661c826c56ab4fee28bfd17f5abca1ebbe3e7f19d7c97983"},
-]
 
 [package.dependencies]
 certifi = ">=2017.4.17"
