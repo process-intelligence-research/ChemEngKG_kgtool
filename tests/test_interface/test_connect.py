@@ -1,7 +1,11 @@
 """Tests for the interface."""
+import os
+
 import pytest
 
-from dbtool.interface import *
+from kgtool.interface import *
+
+chemkg = ChemKG.dev()  # .dev()  ### defaults to dev_url and default_graph
 
 
 @pytest.mark.parametrize(
@@ -18,26 +22,40 @@ def test_connect(options, result):
     assert connect(options) == result
 
 
-def test_fullGraph():
-    assert fullGraph() is not None
-
-
 def test_uploadTurtle():
     # will raise Exception on err
+    absolute_path = os.path.dirname(__file__)
+    file_path = os.path.join(absolute_path, "query2.ttl")
+
     assert (
-        uploadTurtle(
-            "/Users/marvinkleinpass/Developer/TU_DELFT/dbtool/tests/test_interface/query2.ttl"
+        chemkg.uploadTurtle(
+            file_path,
         )
-        is None
+        is not None
     )
 
 
 def test_uploadFile():
     # will raise Exception on err
+    absolute_path = os.path.dirname(__file__)
+    file_path = os.path.join(absolute_path, "query2.ttl")
+
     assert (
-        uploadFile(
-            "/Users/marvinkleinpass/Developer/TU_DELFT/dbtool/tests/test_interface/query2.ttl",
+        chemkg.uploadFile(
+            file_path,
             "query22_DOI",
         )
-        is None
+        is not None
     )
+
+
+def test_getGraphs():
+    assert chemkg.getGraphs() is not None
+
+
+def test_getGraph():
+    assert chemkg.getGraph() is not None
+
+
+def test_runSparql():
+    assert chemkg.runSparql("SELECT * WHERE { ?s ?p ?o } LIMIT 10") is not None
