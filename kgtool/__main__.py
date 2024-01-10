@@ -7,8 +7,8 @@ from random import choice
 import typer
 from rich.console import Console
 
-from dbtool import version
-from dbtool.interface import connect, fullGraph
+from kgtool import version
+from kgtool.interface import connect
 
 
 class Color(str, Enum):
@@ -21,8 +21,8 @@ class Color(str, Enum):
 
 
 app = typer.Typer(
-    name="dbtool",
-    help="awesome dbtool",
+    name="kgtool",
+    help="awesome kgtool",
     add_completion=False,
 )
 console = Console()
@@ -31,7 +31,7 @@ console = Console()
 def version_callback(print_version: bool) -> None:
     """Print the version of the package."""
     if print_version:
-        console.print(f"[yellow]dbtool[/] version: [bold blue]{version}[/]")
+        console.print(f"[yellow]kgtool[/] version: [bold blue]{version}[/]")
         raise typer.Exit()
 
 
@@ -39,11 +39,6 @@ def version_callback(print_version: bool) -> None:
 def _info():
     """Prints Info about the API ?"""
     return 0
-
-
-@app.command(name="fullGraph")
-def _fullGraph():
-    fullGraph()
 
 
 @app.command()
@@ -60,7 +55,7 @@ def main(
         "--version",
         callback=version_callback,
         is_eager=True,
-        help="Prints the version of the dbtool package.",
+        help="Prints the version of the kgtool package.",
     ),
 ) -> None:
     """Connect to the Databases"""
