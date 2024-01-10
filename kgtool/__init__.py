@@ -1,5 +1,5 @@
 # type: ignore[attr-defined]
-"""awesome dbtool"""
+"""awesome kgtool"""
 
 import sys
 
