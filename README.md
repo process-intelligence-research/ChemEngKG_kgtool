@@ -557,6 +557,8 @@ GitHub creates the `bug`, `enhancement`, and `documentation` labels for you. Dep
 
 This project is licensed under the terms of the `MIT` license. See [LICENSE](https://github.com/process-intelligence-research/ChemEngKG_kgtool/blob/main/LICENSE) for more details.
 
+Technische Universiteit Delft hereby disclaims all copyright interest in the program “ChemEngKG” written by Artur M. Schweidtmann. Paulien Herder, Dean of Applied Science
+
 ## 📃 Citation
 
 ```bibtex
